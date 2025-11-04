@@ -1,0 +1,70 @@
+NOTES: AI Agent - LinkedIn Post Generator (Free Setup)
+
+1. SETUP OVERVIEW
+-----------------
+- Platform: Make.com (Free plan)
+- APIs used:
+  - NewsData.io (for news fetch)
+  - OpenRouter (Mistral model for text generation)
+  - Google Sheets (for data logging)
+  - Gmail (for email notifications)
+
+2. REQUIRED API KEYS
+--------------------
+- Get NewsData.io key from https://newsdata.io/register
+- Get OpenRouter key from https://openrouter.ai/settings/keys
+- Google Sheets and Gmail authorized through Make connections (no manual key needed).
+
+3. MAKE.COM MODULE ORDER
+------------------------
+1) Scheduler (Run once / Daily)
+2) HTTP: NewsData API call
+   URL: https://newsdata.io/api/1/news
+   Query string:
+      q = artificial intelligence (fintech OR payments OR supply chain OR healthcare)
+      language = en
+      size = 10
+      apikey = YOUR_KEY
+3) Iterator (results[])
+4) Filter: Bundle position ≤ 4
+5) HTTP: OpenRouter (Mistral) API call
+   URL: https://openrouter.ai/api/v1/chat/completions
+   Method: POST
+   Headers:
+      Authorization: Bearer sk-or-YOUR_KEY
+      Content-Type: application/json
+      HTTP-Referer: https://www.make.com
+   Body: JSON with prompt template for LinkedIn post generation
+6) Error Handler (Resume)
+   Status Code: 200
+   Custom JSON fallback with error_message, status, title, link
+7) Google Sheets: Add Row
+   Columns: Title, Post, Status, Error Message, Status Code, Link, Timestamp
+8) Gmail: Send Email with generated post summary
+
+4. GOOGLE SHEET FORMAT
+----------------------
+Title | Post | Status | Error Message | Status Code | Link | Timestamp
+
+Timestamp formula: {{formatDate(now; "YYYY-MM-DD HH:mm:ss")}}
+
+5. RUN TEST
+------------
+- Run scenario manually once to confirm all connections work.
+- Check Google Sheet for first entries.
+- If Gmail error 403 occurs, reauthorize Gmail connection and grant send permissions.
+
+6. VIDEO & REPO UPLOAD STEPS
+-----------------------------
+- Export the scenario as JSON from Make.com.
+- Save the README.md, README.txt, and notes.txt files.
+- Add your demo video (MyMovie1.mp4) to the repo.
+- Commit all files to GitHub repository.
+- Add a screenshot of the Make.com scenario flow.
+- Post on LinkedIn with GitHub link and video.
+
+7. FUTURE IMPROVEMENTS
+----------------------
+- Add Trello or Jira API integration.
+- Add Slack/Discord notifications for post summaries.
+- Enable direct LinkedIn posting when API becomes public.
