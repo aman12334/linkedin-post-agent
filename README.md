@@ -79,5 +79,5 @@ screenshots/
 
 Aman Tiwari  
 Product Manager | Building agentic workflows with zero budget automation  
-LinkedIn: linkedin.com/in/yourprofile  
-GitHub: github.com/yourusername
+LinkedIn: https://www.linkedin.com/in/amantiwarri/  
+GitHub: github.com/aman12334
