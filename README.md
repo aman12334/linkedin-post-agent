@@ -58,8 +58,7 @@ This workflow requires no paid APIs or servers.
 
 | Title | Post | Status | Error Message | Status Code | Link | Timestamp |
 |--------|------|--------|----------------|--------------|------|------------|
-| AI in Supply Chains | LinkedIn post text... | Success |  | 200 | https://newslink | 2025-11-03 22:40 |
-| AI in Healthcare | Post could not be generated... | Failed | 500 Internal Server Error | 500 | https://newslink | 2025-11-03 22:41 |
+| AI in Supply Chains | LinkedIn post text... | Success |  | 200 | https://docs.google.com/spreadsheets/d/1a0fVggR1sB5nwX9wBaoEdrZwehbhSlnk8YbvFrG2NyI/edit?usp=sharing | 2025-11-03 22:40 |
 
 ## Notes
 
